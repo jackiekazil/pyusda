@@ -3,8 +3,25 @@ pyusda
 
 Script and instructions to interact with USDA's API
 
+### Run APIObject from the commandline
+```
+$ python pyusda.py http://api.data.gov/USDA/ERS/data/Arms/Surveys put_your_api_key_here
+```
 
-Example of usage from ipython, a python interpretor.
+The first arg is the api_url. The second is your API_KEY.
+```
+$ python pyusda.py $API_URL $API_KEY
+```
+Where $API_URL is the url that you want to hit and $API_KEY is replaced with your API_KEY.
+
+If you would like to capture the output run the following:
+```
+$ python pyusda.py 'data/Arms/Surveys' $API_KEY > output.json
+```
+The output.json file in this repo has an example of how the output would be stored.
+
+
+### Example of usage from ipython, a python interpretor.
 ```python
 In [1]: api_key = 'put_your_api_key_here'
 
