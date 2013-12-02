@@ -5,31 +5,31 @@ import requests
 
 
 class APIObject(object):
-    # api_url Example: 'data/Arms/Surveys'
-    # key Register here: 'https://api.data.gov/signup'
+    """
+    API Objects pulls data and stores the response.
+    """
 
-    def __init__(self, api_url, api_key, base_url='http://api.data.gov/USDA/ERS/'):
+    def __init__(self, api_url, api_key):
 
-        self.url = self._setup_url(api_url, api_key, base_url)
-        self.response = self._get_data()
-        self.data = self.response.json()
-
-    def _setup_url(self, api_url, api_key, base_url):
-        url = '%s%s?api_key=%s' % (base_url, api_url, api_key)
-        return url
-
-    def _get_data(self):
+        self.url = '%s?api_key=%s' % (api_url, api_key)
         self.response = requests.get(self.url)
-        return self.response
+        self.data = self.response.json()
 
 
 if __name__ == "__main__":
+    """
+    Run APIObject from the commandline:
+    $ python pyusda.py http://api.data.gov/USDA/ERS/data/Arms/Surveys put_your_api_key_here
+
+    The first arg is the api_url. The second is your API_KEY.
+    $ python pyusda.py $API_URL $API_KEY
+
+    Where $API_URL is the url that you want to hit and $API_KEY is replaced with your API_KEY.
+
+    If you would like to capture the output run the following:
+    $ python pyusda.py 'data/Arms/Surveys' $API_KEY > output.json
+
+    """
     import pprint
     ap = APIObject(sys.argv[1], sys.argv[2])
     pprint.pprint(ap.data)
-
-# python pyusda.py 'data/Arms/Surveys' $API_KEY
-# {u'dataTable': [{u'surveyDesc': u'Crop production practices',
-#                  u'survey_abb': u'CROP'},
-#                 {u'surveyDesc': u'Farm finances', u'survey_abb': u'FINANCE'}],
-#  u'infoTable': [{u'message': u'NO ERROR', u'recordCount': 2}]}
