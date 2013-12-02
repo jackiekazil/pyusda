@@ -28,8 +28,8 @@ if __name__ == "__main__":
     ap = APIObject(sys.argv[1], sys.argv[2])
     pprint.pprint(ap.data)
 
-python pyusda.py 'data/Arms/Surveys' $API_KEY
-{u'dataTable': [{u'surveyDesc': u'Crop production practices',
-                 u'survey_abb': u'CROP'},
-                {u'surveyDesc': u'Farm finances', u'survey_abb': u'FINANCE'}],
- u'infoTable': [{u'message': u'NO ERROR', u'recordCount': 2}]}
+# python pyusda.py 'data/Arms/Surveys' $API_KEY
+# {u'dataTable': [{u'surveyDesc': u'Crop production practices',
+#                  u'survey_abb': u'CROP'},
+#                 {u'surveyDesc': u'Farm finances', u'survey_abb': u'FINANCE'}],
+#  u'infoTable': [{u'message': u'NO ERROR', u'recordCount': 2}]}
